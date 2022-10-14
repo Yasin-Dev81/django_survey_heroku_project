@@ -1,0 +1,81 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+    Survey Create
+{% endblock page_title %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-9">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <!-- title survey -->
+                    <div class="card shadow my-3 p-5">
+                        <h3>Title survey :</h3>
+                        <div class="container mt-3">
+                            <div class="form-group">
+                                <label for="survey_title">Survey Title:</label>
+                                <input type="text" id="survey_title" name="survey_title" required><br><br>
+                                <label for="survey_description">Survey Description:</label>
+                                <textarea class="form-control" rows="5" id="survey_description" name="survey_description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- question survey -->
+                    {% for question_num in question_len %}
+                        <div class="card shadow my-3 p-5">
+                            <h3>Question survey {{ question_num }} :</h3>
+                            <div class="container mt-3">
+                                <div class="form-group">
+                                    <label for="survey_question_{{ question_num }}">Survey Question Text:</label>
+                                    <textarea class="form-control" rows="3"
+                                              id="survey_question_{{ question_num }}"
+                                              name="survey_question_{{ question_num }}"
+                                              required
+                                    ></textarea>
+                                </div>
+                                <p></p>
+                                {% for option_num in option_len %}
+                                    <div class="form-group">
+                                        <label for="survey_option_{{ option_num }}">Survey
+                                            Option {{ option_num }}:</label>
+                                        <input type="text"
+                                               id="survey_option_{{ option_num }}"
+                                               name="survey_option_{{ option_num }}"
+                                               required
+                                        >
+                                        <br><br>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="card shadow my-3 p-5">
+                        <h3>Save Survey :</h3>
+                        <div class="container mt-3">
+                            <h4>Are you sure about registering the survey?</h4>
+                            <button type="submit" class="btn btn-primary mt-3">Yes, Save it.</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-3">
+
+                <div class="card my-4">
+                    <h5 class="card-header">About</h5>
+                    <div class="card-body">
+                        <p class="card-text">We love python and django. So we created a blog site to share our
+                            thoughts</p>
+                        <a href="#"
+                           class="btn btn-sm btn-danger">
+                            More...
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,61 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+    Survey Create
+{% endblock page_title %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-9">
+                <div class="card shadow my-3 p-5">
+                    <div class="container mt-3">
+                        <h3>
+                            Please specify the number of questions and answers:
+                        </h3>
+                        <div class="col-md-3">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <label for="validationDefault04" class="form-label">Questions Count:</label>
+                                <select class="form-select" id="validationDefault04" name="question_len" required>
+                                    <option selected disabled value="">Choose...</option>
+                                    <option value="1" name="1">1</option>
+                                    <option value="2" name="2">2</option>
+                                    <option value="3" name="3">3</option>
+                                    <option value="4" name="4">4</option>
+                                    <option value="5" name="5">5</option>
+                                </select>
+                                <br>
+                                <label for="validationDefault04" class="form-label">Options Count:</label>
+                                <select class="form-select" id="validationDefault04" name="option_len" required>
+                                    <option selected disabled value="">Choose...</option>
+                                    <option value="1" name="1">1</option>
+                                    <option value="2" name="2">2</option>
+                                    <option value="3" name="3">3</option>
+                                    <option value="4" name="4">4</option>
+                                </select>
+                                <button type="submit" class="btn btn-primary mt-3">Go to creation form.</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+
+                <div class="card my-4">
+                    <h5 class="card-header">About</h5>
+                    <div class="card-body">
+                        <p class="card-text">We love python and django. So we created a blog site to share our
+                            thoughts</p>
+                        <a href="#"
+                           class="btn btn-sm btn-danger">
+                            More...
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
